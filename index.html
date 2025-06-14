@@ -2,19 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>GrindUp | Free Premium Course</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
   <style>
     * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+      margin: 0; padding: 0; box-sizing: border-box;
     }
-
     body {
-      background-color: #0e0e0e;
-      color: #ffffff;
+      background: #000000; /* pure black for luxury */
+      color: #e0e0e0; /* soft white for text */
       font-family: 'Inter', sans-serif;
       display: flex;
       flex-direction: column;
@@ -24,53 +21,97 @@
       text-align: center;
       padding: 20px;
     }
-
+    header img {
+      width: 120px;
+      margin-bottom: 30px;
+      filter: brightness(1.2);
+    }
     h1 {
       font-size: 42px;
       font-weight: 800;
       letter-spacing: 1px;
+      color: #ffffff;
     }
-
     p {
       font-size: 18px;
       font-weight: 400;
-      color: #aaaaaa;
+      color: #bbbbbb;
       margin-top: 10px;
+      max-width: 400px;
     }
-
     a.button {
       display: inline-block;
       margin-top: 40px;
-      padding: 16px 36px;
+      padding: 16px 40px;
       background-color: #ffffff;
       color: #000000;
-      font-weight: 600;
-      font-size: 16px;
+      font-weight: 700;
+      font-size: 18px;
       text-decoration: none;
-      border-radius: 12px;
+      border-radius: 14px;
+      box-shadow: 0 6px 15px rgba(255, 255, 255, 0.2);
       transition: all 0.3s ease;
     }
-
     a.button:hover {
-      background-color: #dcdcdc;
+      background-color: #d4d4d4;
+      box-shadow: 0 8px 20px rgba(255, 255, 255, 0.35);
     }
-
     .tagline {
       font-size: 14px;
-      color: #666;
+      color: #666666;
       margin-top: 40px;
+      letter-spacing: 0.6px;
+      font-style: italic;
+    }
+    .socials {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+    }
+    .socials a {
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 18px;
+      text-decoration: none;
+      border: 2px solid #ffffff;
+      padding: 10px 24px;
+      border-radius: 12px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      letter-spacing: 0.8px;
+    }
+    .socials a:hover {
+      background-color: #ffffff;
+      color: #000000;
+    }
+    footer {
+      margin-top: 50px;
+      font-size: 16px;
+      color: #999999;
+      font-style: italic;
+      max-width: 480px;
     }
   </style>
 </head>
 <body>
 
-  <h1>Your Premium Course</h1>
-  <p>Download the course now and start leveling up.</p>
+  <header>
+    <img src="https://i.imgur.com/q6Ht0wM.png" alt="GrindUp Logo" />
+  </header>
 
-  <a class="button" href="https://mega.nz/folder/1Ks01TiR#noVGm5BlMoKMU4IzfAiJGQ" target="_blank">Download Now</a>
+  <h1>Your Premium Course</h1>
+  <p>Download the course now and start leveling up your hustle.</p>
+
+  <a class="button" href="https://mega.nz/folder/1Ks01TiR#noVGm5BlMoKMU4IzfAiJGQ" target="_blank" rel="noopener noreferrer">Download Now</a>
 
   <div class="tagline">Built to grind. Made to win.</div>
 
+  <div class="socials">
+    <a href="https://www.instagram.com/grind.up7/" target="_blank" rel="noopener noreferrer">Instagram</a>
+  </div>
+
+  <footer>
+    Thank you for trusting GrindUp. Your success is our mission.
+  </footer>
+
 </body>
 </html>
-
