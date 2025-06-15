@@ -32,16 +32,15 @@
     .logo {
       width: 200px;
       margin-bottom: 30px;
-      animation: fadeIn 1.2s ease-in-out;
     }
 
     .card {
-      background: rgba(0, 0, 0, 0.75);
+      background: rgba(0, 0, 0, 0.85);
       padding: 40px;
       border-radius: 20px;
       max-width: 500px;
       width: 100%;
-      box-shadow: 0 0 40px rgba(255, 255, 255, 0.05);
+      box-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
       animation: fadeIn 1.2s ease-in-out;
       margin-bottom: 30px;
     }
@@ -51,7 +50,6 @@
       font-weight: 800;
       margin-bottom: 20px;
       letter-spacing: 1px;
-      animation: slideIn 1.2s ease-in-out;
     }
 
     p {
@@ -70,8 +68,6 @@
       border-radius: 12px;
       font-size: 16px;
       transition: 0.3s ease;
-      box-shadow: 0 0 15px rgba(255,255,255,0.3);
-      animation: glow 2s infinite alternate;
     }
 
     .btn:hover {
@@ -102,7 +98,6 @@
       padding: 30px;
       border-radius: 16px;
       box-shadow: 0 0 20px rgba(255, 255, 255, 0.04);
-      animation: fadeIn 1.5s ease-in-out;
     }
 
     .section h2 {
@@ -135,11 +130,18 @@
       cursor: pointer;
     }
 
-    #timer {
-      font-size: 18px;
-      margin-bottom: 10px;
-      font-weight: 600;
-      animation: pulse 2s infinite;
+    .preview {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .preview img {
+      width: 180px;
+      border-radius: 10px;
+      box-shadow: 0 0 12px rgba(255, 255, 255, 0.1);
     }
 
     @keyframes fadeIn {
@@ -151,16 +153,6 @@
         opacity: 1;
         transform: translateY(0);
       }
-    }
-
-    @keyframes slideIn {
-      from { opacity: 0; transform: translateY(-30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes glow {
-      from { box-shadow: 0 0 5px rgba(255,255,255,0.1); }
-      to { box-shadow: 0 0 20px rgba(255,255,255,0.5); }
     }
 
     @keyframes pulse {
@@ -180,7 +172,6 @@
     <a href="https://www.instagram.com/grind.up7/" class="insta" target="_blank">
       <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Logo">@grind.up7
     </a>
-    <div id="timer">Offer ends in: 24h 00m 00s</div>
     <div class="urgency" onclick="window.open('https://mega.nz/folder/1Ks01TiR#noVGm5BlMoKMU4IzfAiJGQ', '_blank')">
       Limited-Time Free Access – Grab it NOW!
     </div>
@@ -192,23 +183,17 @@
   </div>
 
   <div class="section">
+    <h2>Preview the Course</h2>
+    <div class="preview">
+      <img src="course1.jpg" alt="Course Screenshot 1">
+      <img src="course2.jpg" alt="Course Screenshot 2">
+    </div>
+  </div>
+
+  <div class="section">
     <h2>Success Quote</h2>
     <blockquote>“Success is not final, failure is not fatal: it is the courage to continue that counts.”</blockquote>
     <p>- Winston Churchill</p>
   </div>
-
-  <script>
-    const timerEl = document.getElementById("timer");
-    let timeLeft = 86400;
-    function updateTimer() {
-      const hours = Math.floor(timeLeft / 3600);
-      const minutes = Math.floor((timeLeft % 3600) / 60);
-      const seconds = timeLeft % 60;
-      timerEl.textContent = `Offer ends in: ${hours}h ${minutes}m ${seconds}s`;
-      timeLeft--;
-      if (timeLeft >= 0) setTimeout(updateTimer, 1000);
-    }
-    updateTimer();
-  </script>
 </body>
 </html>
