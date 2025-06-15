@@ -21,6 +21,7 @@
       justify-content: flex-start;
     }
 
+    /* Logo with curved border - no color fill, no glow */
     .header-logo {
       position: fixed;
       top: 20px;
@@ -33,12 +34,14 @@
       cursor: default;
     }
     .logo-rounded-border {
-      border: 1.5px solid currentColor;
-      padding: 6px;
-      border-radius: 12px;
+      border: 1.5px solid currentColor; /* simple thin border */
+      border-radius: 20px; /* subtle curve */
+      padding: 6px 10px; /* some horizontal padding for shape */
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      background: transparent; /* no fill */
+      box-shadow: none; /* no glow */
     }
     .header-logo .brand-name {
       font-weight: 700;
@@ -53,6 +56,7 @@
       display: block;
     }
 
+    /* Urgency button with animated emoji */
     .urgency {
       background-color: #222;
       color: #f5f5f7;
@@ -82,6 +86,7 @@
       50% { transform: translateX(6px); }
     }
 
+    /* Card */
     .card {
       background-color: #111;
       border-radius: 14px;
@@ -139,6 +144,7 @@
       height: 20px;
     }
 
+    /* Section */
     .section {
       max-width: 700px;
       width: 100%;
@@ -174,6 +180,7 @@
       margin-top: -12px;
     }
 
+    /* Preview images */
     .preview {
       display: flex;
       flex-wrap: wrap;
@@ -192,6 +199,7 @@
       transform: scale(1.05);
     }
 
+    /* Zoom Modal */
     .modal {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
@@ -209,6 +217,7 @@
       box-shadow: 0 0 30px rgba(255,255,255,0.2);
     }
 
+    /* Thank You Popup */
     .popup {
       position: fixed;
       bottom: 20px;
@@ -223,13 +232,17 @@
       align-items: center;
       gap: 10px;
       z-index: 3000;
+      user-select: none;
     }
     .popup button {
       background: none;
       border: none;
       color: #f5f5f7;
-      font-size: 16px;
+      font-size: 20px;
       cursor: pointer;
+      line-height: 1;
+      padding: 0 6px 0 6px;
+      font-weight: 700;
     }
 
     @media (max-width: 600px) {
@@ -248,41 +261,41 @@
 </head>
 <body>
 
-  <div class="header-logo">
-    <div class="logo-rounded-border">
-      <img src="grindup-logo.jpg" alt="GrindUp Logo" />
+  <div class="header-logo" aria-label="GrindUp Logo and Brand Name">
+    <div class="logo-rounded-border" aria-hidden="true">
+      <img src="grindup-logo.jpg" alt="GrindUp logo" />
     </div>
     <div class="brand-name">GRINDUP</div>
   </div>
 
-  <div class="urgency" onclick="window.open('https://mega.nz/folder/1Ks01TiR#noVGm5BlMoKMU4IzfAiJGQ', '_blank')">
-    <span class="pointer">👉🏽</span> Limited-Time Free Access – Grab it NOW!
+  <div class="urgency" role="button" tabindex="0" aria-label="Limited Time Free Access Button" onclick="window.open('https://mega.nz/folder/1Ks01TiR#noVGm5BlMoKMU4IzfAiJGQ', '_blank')">
+    <span class="pointer" aria-hidden="true">👉🏽</span> Limited-Time Free Access – Grab it NOW!
   </div>
 
-  <div class="card">
-    <h1>Welcome to GrindUp</h1>
+  <div class="card" role="region" aria-labelledby="welcomeTitle">
+    <h1 id="welcomeTitle">Welcome to GrindUp</h1>
     <p>Your gateway to premium courses designed to elevate your hustle.</p>
     <a href="https://mega.nz/folder/1Ks01TiR#noVGm5BlMoKMU4IzfAiJGQ" class="btn" target="_blank" rel="noopener noreferrer">Download Now</a>
-    <a href="https://www.instagram.com/grind.up7/" class="insta" target="_blank" rel="noopener noreferrer">
+    <a href="https://www.instagram.com/grind.up7/" class="insta" target="_blank" rel="noopener noreferrer" aria-label="Visit Instagram profile">
       <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Logo" />@grind.up7
     </a>
   </div>
 
-  <div class="section">
-    <h2>What You’ll Learn</h2>
+  <div class="section" role="region" aria-labelledby="learnTitle">
+    <h2 id="learnTitle">What You’ll Learn</h2>
     <p>This package contains multiple high-value courses including Dropshipping, Facebook Ads, and more – everything you need to kickstart your online income journey.</p>
   </div>
 
-  <div class="section">
-    <h2>Preview the Course</h2>
+  <div class="section" role="region" aria-labelledby="previewTitle">
+    <h2 id="previewTitle">Preview the Course</h2>
     <div class="preview">
       <img src="course1.jpg" alt="Course Screenshot 1" tabindex="0" />
       <img src="course2.jpg" alt="Course Screenshot 2" tabindex="0" />
     </div>
   </div>
 
-  <div class="section">
-    <h2>Success Quote</h2>
+  <div class="section" role="region" aria-labelledby="quoteTitle">
+    <h2 id="quoteTitle">Success Quote</h2>
     <blockquote>“Success is not final, failure is not fatal: it is the courage to continue that counts.”</blockquote>
     <p>- Winston Churchill</p>
   </div>
@@ -293,12 +306,13 @@
   </div>
 
   <!-- Thank You Popup -->
-  <div class="popup" id="popup">
+  <div class="popup" id="popup" role="alert" aria-live="polite">
     <span>Thank you for visiting GrindUp!</span>
-    <button onclick="document.getElementById('popup').style.display='none'">✖</button>
+    <button aria-label="Close thank you popup" onclick="document.getElementById('popup').style.display='none'">✖</button>
   </div>
 
   <script>
+    // Image zoom modal logic
     const modal = document.getElementById('modal');
     const modalImg = document.getElementById('modal-img');
     const previews = document.querySelectorAll('.preview img');
