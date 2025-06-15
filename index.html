@@ -3,192 +3,144 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>GrindUp | Exclusive Course Access</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;900&display=swap" rel="stylesheet" />
+  <title>GrindUp | Premium Access</title>
+  <link href="https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    /* Reset & base */
+    /* Reset */
     * {
       margin: 0; padding: 0; box-sizing: border-box;
     }
     body {
-      font-family: 'Montserrat', sans-serif;
-      background:
-        radial-gradient(circle at center, rgba(0,0,0,0.85), rgba(0,0,0,0.95) 75%),
-        url('bg.jpg') center/cover no-repeat;
+      background-color: #000;
+      color: #f5f5f7;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
       min-height: 100vh;
-      color: #eee;
+      padding: 20px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      padding: 20px;
-      position: relative;
+      justify-content: flex-start;
     }
 
-    /* Ultra luxury fixed top-left bar - no border */
+    /* Fixed top-left logo + brand */
     .header-logo {
       position: fixed;
-      top: 24px;
-      left: 24px;
+      top: 20px;
+      left: 20px;
       display: flex;
       align-items: center;
-      gap: 16px;
-      padding: 10px 28px;
-      background: rgba(20, 20, 20, 0.45);
-      backdrop-filter: blur(14px);
-      box-shadow:
-        0 4px 15px rgba(255 215 0 / 0.22),
-        inset 0 0 10px rgba(255 215 0 / 0.10);
-      border-radius: 12px;
+      gap: 12px;
+      user-select: none;
+      z-index: 1000;
       cursor: default;
-      user-select: none;
-      transition: box-shadow 0.3s ease;
-      z-index: 1100;
-      /* No border here as requested */
     }
-    .header-logo:hover {
-      box-shadow:
-        0 6px 30px rgba(255 215 0 / 0.35),
-        inset 0 0 20px rgba(255 215 0 / 0.15);
-    }
-
     .header-logo img {
-      height: 48px;
-      border-radius: 8px;
-      filter: drop-shadow(0 0 6px rgba(255 215 0, 0.3));
+      height: 40px;
+      width: auto;
       display: block;
+      filter: none;
     }
-
     .header-logo .brand-name {
-      font-weight: 900;
+      font-weight: 700;
       font-size: 22px;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
-      background: linear-gradient(45deg, #FFD700, #FFC107 80%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
-      user-select: none;
-      font-family: 'Montserrat', sans-serif;
+      color: #f5f5f7;
     }
 
     /* Main card */
     .card {
-      background: rgba(12, 12, 12, 0.85);
-      padding: 48px 50px;
-      border-radius: 24px;
+      background-color: #111;
+      border-radius: 14px;
+      padding: 36px 44px;
       max-width: 520px;
       width: 100%;
-      box-shadow:
-        0 0 40px rgba(255, 215, 0, 0.2),
-        inset 0 0 20px rgba(255, 215, 0, 0.08);
-      animation: fadeIn 1.3s ease forwards;
+      box-shadow: 0 0 24px rgba(255,255,255,0.05);
       text-align: center;
+      margin-top: 100px;
       user-select: none;
     }
     .card h1 {
-      font-size: 36px;
-      font-weight: 900;
+      font-weight: 700;
+      font-size: 32px;
       margin-bottom: 28px;
       letter-spacing: 0.1em;
-      color: #FFD700;
-      text-shadow: 0 0 12px rgba(255, 215, 0, 0.7);
+      color: #fff;
     }
     .card p {
+      font-weight: 400;
       font-size: 18px;
+      margin-bottom: 36px;
       color: #ccc;
-      margin-bottom: 40px;
       line-height: 1.5;
-      font-weight: 600;
     }
     .btn {
-      background: linear-gradient(135deg, #FFD700, #FFA500);
-      padding: 18px 44px;
-      border-radius: 28px;
-      font-weight: 800;
+      background-color: #f5f5f7;
+      color: #000;
+      padding: 14px 42px;
+      font-weight: 700;
       font-size: 18px;
-      color: #111;
+      border-radius: 26px;
       text-decoration: none;
-      box-shadow: 0 8px 20px rgba(255, 215, 0, 0.4);
-      transition: all 0.3s ease;
       display: inline-block;
+      transition: background-color 0.3s ease;
       user-select: none;
     }
     .btn:hover {
-      filter: brightness(1.1);
-      box-shadow: 0 12px 30px rgba(255, 215, 0, 0.65);
-      transform: translateY(-3px);
+      background-color: #ddd;
     }
-
-    /* Instagram link */
     .insta {
-      margin-top: 30px;
-      font-size: 15px;
-      font-weight: 700;
-      color: #FFD700;
+      margin-top: 28px;
+      font-weight: 600;
+      font-size: 16px;
+      color: #f5f5f7;
       text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
       user-select: none;
       letter-spacing: 0.05em;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
     }
     .insta img {
-      width: 22px;
-      height: 22px;
-      filter: drop-shadow(0 0 2px #FFD700);
+      width: 20px;
+      height: 20px;
+      filter: none;
     }
 
     /* Sections */
     .section {
-      max-width: 720px;
+      max-width: 700px;
+      width: 100%;
+      background-color: #111;
       margin-top: 48px;
-      background: rgba(18, 18, 18, 0.75);
-      padding: 36px 40px;
-      border-radius: 18px;
-      box-shadow: 0 0 25px rgba(255, 215, 0, 0.15);
-      user-select: none;
+      border-radius: 14px;
+      padding: 28px 32px;
+      box-shadow: 0 0 18px rgba(255,255,255,0.04);
+      color: #ccc;
     }
     .section h2 {
-      font-weight: 900;
-      font-size: 26px;
-      margin-bottom: 18px;
-      letter-spacing: 0.1em;
-      color: #FFD700;
-      text-shadow: 0 0 6px rgba(255, 215, 0, 0.6);
+      font-weight: 700;
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #f5f5f7;
+      letter-spacing: 0.05em;
     }
     .section p {
-      font-weight: 600;
       font-size: 16px;
-      color: #ddd;
-      line-height: 1.6;
+      line-height: 1.5;
     }
     blockquote {
-      font-style: italic;
-      font-size: 17px;
-      color: #fff1a8;
-      margin: 20px 0 12px;
-      text-shadow: 0 0 4px #ffe066aa;
-      user-select: none;
-    }
-
-    /* Urgency button */
-    .urgency {
-      margin-top: 40px;
-      background: #b37f00;
-      padding: 14px 36px;
-      border-radius: 30px;
-      font-weight: 800;
       font-size: 18px;
-      color: #fff;
-      cursor: pointer;
-      box-shadow: 0 0 25px #ffd700aa;
-      user-select: none;
-      transition: box-shadow 0.4s ease;
-      display: inline-block;
+      font-style: italic;
+      color: #eee;
+      margin: 20px 0;
     }
-    .urgency:hover {
-      box-shadow: 0 0 45px #ffd700ff;
+    blockquote + p {
+      font-size: 16px;
+      color: #bbb;
+      font-weight: 600;
+      text-align: right;
+      margin-top: -12px;
     }
 
     /* Preview images */
@@ -197,95 +149,98 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 18px;
-      margin-top: 38px;
+      margin-top: 12px;
     }
     .preview img {
-      width: 190px;
+      width: 180px;
       border-radius: 14px;
-      cursor: zoom-in;
-      box-shadow: 0 0 20px rgba(255, 215, 0, 0.25);
+      box-shadow: 0 0 12px rgba(255,255,255,0.1);
+      cursor: pointer;
       transition: transform 0.3s ease;
-      user-select: none;
     }
     .preview img:hover {
-      transform: scale(1.07);
-      box-shadow: 0 0 35px rgba(255, 215, 0, 0.45);
+      transform: scale(1.05);
     }
 
-    /* Modal */
+    /* Modal for zoom preview */
     .modal {
-      display: none;
       position: fixed;
-      z-index: 1500;
-      left: 0; top: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.95);
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.9);
+      display: none;
       align-items: center;
       justify-content: center;
+      z-index: 2000;
+      cursor: zoom-out;
     }
-    .modal-content {
+    .modal img {
       max-width: 90%;
       max-height: 90%;
-      border-radius: 18px;
-      box-shadow: 0 0 60px rgba(255, 215, 0, 0.7);
-      animation: fadeIn 0.6s ease;
-      user-select: none;
-    }
-    .modal-close {
-      position: fixed;
-      top: 28px;
-      right: 40px;
-      font-size: 42px;
-      font-weight: 900;
-      color: #ffd700cc;
-      cursor: pointer;
-      user-select: none;
-      transition: color 0.3s ease;
-      z-index: 1600;
-      font-family: 'Montserrat', sans-serif;
-    }
-    .modal-close:hover {
-      color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 0 30px rgba(255,255,255,0.2);
     }
 
-    /* Animations */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    /* Urgency button */
+    .urgency {
+      background-color: #222;
+      color: #f5f5f7;
+      font-weight: 700;
+      padding: 14px 36px;
+      border-radius: 26px;
+      margin: 40px auto 0 auto;
+      max-width: 520px;
+      text-align: center;
+      cursor: pointer;
+      user-select: none;
+      letter-spacing: 0.05em;
+      box-shadow: 0 0 8px rgba(255,255,255,0.08);
+      transition: background-color 0.3s ease;
+    }
+    .urgency:hover {
+      background-color: #444;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .preview img {
+        width: 140px;
+      }
+      .card, .section, .urgency {
+        padding: 28px 24px;
+      }
+      .header-logo {
+        top: 12px;
+        left: 12px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Top-left luxury logo bar -->
   <div class="header-logo">
     <img src="grindup-logo.jpg" alt="GrindUp Logo" />
-    <div class="brand-name">GrindUp</div>
+    <div class="brand-name">GRINDUP</div>
   </div>
 
   <div class="card">
     <h1>Welcome to GrindUp</h1>
-    <p>Your gateway to exclusive, premium courses designed to elevate your hustle and turn dreams into reality.</p>
+    <p>Your gateway to premium courses designed to elevate your hustle.</p>
     <a href="https://mega.nz/folder/1Ks01TiR#noVGm5BlMoKMU4IzfAiJGQ" class="btn" target="_blank" rel="noopener noreferrer">Download Now</a>
     <a href="https://www.instagram.com/grind.up7/" class="insta" target="_blank" rel="noopener noreferrer">
       <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Logo" />@grind.up7
     </a>
-    <div class="urgency" onclick="window.open('https://mega.nz/folder/1Ks01TiR#noVGm5BlMoKMU4IzfAiJGQ', '_blank')">
-      Limited-Time Free Access – Grab it NOW!
-    </div>
   </div>
 
   <div class="section">
     <h2>What You’ll Learn</h2>
-    <p>High-value courses in Dropshipping, Facebook Ads, and much more — everything you need to kickstart your journey to success.</p>
+    <p>This package contains multiple high-value courses including Dropshipping, Facebook Ads, and more – everything you need to kickstart your online income journey.</p>
   </div>
 
   <div class="section">
     <h2>Preview the Course</h2>
     <div class="preview">
-      <img src="course1.jpg" alt="Course Screenshot 1" class="preview-img" />
-      <img src="course2.jpg" alt="Course Screenshot 2" class="preview-img" />
+      <img src="course1.jpg" alt="Course Screenshot 1" tabindex="0" />
+      <img src="course2.jpg" alt="Course Screenshot 2" tabindex="0" />
     </div>
   </div>
 
@@ -295,30 +250,46 @@
     <p>- Winston Churchill</p>
   </div>
 
-  <!-- Modal for image zoom -->
-  <div id="imgModal" class="modal">
-    <span class="modal-close" id="modalClose">&times;</span>
-    <img class="modal-content" id="modalImg" />
+  <div class="urgency" onclick="window.open('https://mega.nz/folder/1Ks01TiR#noVGm5BlMoKMU4IzfAiJGQ', '_blank')">
+    Limited-Time Free Access – Grab it NOW!
+  </div>
+
+  <!-- Modal for zoom preview -->
+  <div class="modal" id="modal" tabindex="-1" role="dialog" aria-hidden="true" aria-label="Image preview">
+    <img id="modal-img" src="" alt="Zoomed course preview" />
   </div>
 
   <script>
-    const modal = document.getElementById("imgModal");
-    const modalImg = document.getElementById("modalImg");
-    const modalClose = document.getElementById("modalClose");
+    const modal = document.getElementById('modal');
+    const modalImg = document.getElementById('modal-img');
+    const previews = document.querySelectorAll('.preview img');
 
-    document.querySelectorAll('.preview-img').forEach(img => {
+    previews.forEach(img => {
       img.addEventListener('click', () => {
-        modal.style.display = "flex";
         modalImg.src = img.src;
-        modalImg.alt = img.alt;
+        modal.style.display = 'flex';
+        modal.focus();
+      });
+      img.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          modalImg.src = img.src;
+          modal.style.display = 'flex';
+          modal.focus();
+        }
       });
     });
 
-    modalClose.onclick = () => modal.style.display = "none";
-
-    window.onclick = e => {
-      if (e.target === modal) modal.style.display = "none";
-    };
+    modal.addEventListener('click', () => {
+      modal.style.display = 'none';
+      modalImg.src = '';
+    });
+    modal.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        modal.style.display = 'none';
+        modalImg.src = '';
+      }
+    });
   </script>
 
 </body>
