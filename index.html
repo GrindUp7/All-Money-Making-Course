@@ -3,77 +3,152 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GrindUp Course Access</title>
+  <title>GrindUp | Exclusive Course Access</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
+      font-family: 'Montserrat', sans-serif;
       background-image: url('bg.jpg');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
+      min-height: 100vh;
       color: #fff;
-      font-family: 'Helvetica Neue', sans-serif;
-      margin: 0;
-      padding: 0;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      min-height: 100vh;
+      flex-direction: column;
       text-align: center;
-      backdrop-filter: brightness(0.5);
+      padding: 20px;
+      backdrop-filter: brightness(0.4);
     }
 
-    img.logo {
-      width: 180px;
-      margin-bottom: 20px;
-      filter: brightness(1.2);
+    .logo {
+      width: 200px;
+      margin-bottom: 30px;
+    }
+
+    .card {
+      background: rgba(0, 0, 0, 0.75);
+      padding: 40px;
+      border-radius: 20px;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 0 40px rgba(255, 255, 255, 0.05);
+      animation: fadeIn 1.2s ease-in-out;
+      margin-bottom: 30px;
     }
 
     h1 {
-      font-size: 28px;
-      font-weight: 600;
-      margin-bottom: 10px;
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 20px;
       letter-spacing: 1px;
     }
 
     p {
       font-size: 16px;
+      color: #ccc;
       margin-bottom: 30px;
-      color: #ddd;
     }
 
-    a.download-button {
-      background-color: #fff;
+    .btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #fff, #ddd);
       color: #000;
-      padding: 12px 28px;
-      font-weight: bold;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 14px 30px;
+      border-radius: 12px;
       font-size: 16px;
-      border-radius: 8px;
+      transition: 0.3s ease;
+    }
+
+    .btn:hover {
+      background: linear-gradient(135deg, #e5e5e5, #cfcfcf);
+    }
+
+    .insta {
+      display: block;
+      margin-top: 25px;
+      font-size: 14px;
+      color: #999;
       text-decoration: none;
       transition: 0.3s;
     }
 
-    a.download-button:hover {
-      background-color: #e5e5e5;
-    }
-
-    a.instagram {
-      color: #ccc;
-      margin-top: 30px;
-      font-size: 14px;
-      text-decoration: none;
-    }
-
-    a.instagram:hover {
+    .insta:hover {
       color: #fff;
+    }
+
+    .section {
+      max-width: 700px;
+      margin-top: 40px;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.04);
+    }
+
+    .section h2 {
+      font-size: 24px;
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+
+    .section p {
+      font-size: 15px;
+      color: #ccc;
+      line-height: 1.6;
+    }
+
+    blockquote {
+      font-size: 16px;
+      font-style: italic;
+      color: #eee;
+      margin: 20px 0;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
 <body>
   <img src="grindup-logo.jpg" alt="GrindUp Logo" class="logo" />
-  <h1>Welcome to GrindUp</h1>
-  <p>Your premium course is ready to download</p>
-  <a class="download-button" href="https://mega.nz/folder/1Ks01TiR#noVGm5BlMoKMU4IzfAiJGQ" target="_blank">Download Now</a>
-  <a class="instagram" href="https://www.instagram.com/grind.up7/" target="_blank">Follow us on Instagram</a>
+
+  <div class="card">
+    <h1>Welcome to GrindUp</h1>
+    <p>This is your gateway to the most exclusive course built for future millionaires. Click below and begin your journey to the top.</p>
+    <a href="https://mega.nz/folder/1Ks01TiR#noVGm5BlMoKMU4IzfAiJGQ" class="btn" target="_blank">Download Now</a>
+    <a href="https://www.instagram.com/grind.up7/" class="insta" target="_blank">@grind.up7</a>
+  </div>
+
+  <div class="section">
+    <h2>What You’ll Learn</h2>
+    <p>✔ How to launch and automate a digital product business<br>
+       ✔ Step-by-step AI tools and systems to build cashflow<br>
+       ✔ Secrets behind viral growth on social platforms<br>
+       ✔ Monetization strategies to earn without followers or investment</p>
+  </div>
+
+  <div class="section">
+    <h2>Success Quote</h2>
+    <blockquote>“This course gave me the mindset and tools to launch my first online income stream in 7 days. Life-changing.”</blockquote>
+    <p>- A GrindUp Student</p>
+  </div>
 </body>
 </html>
