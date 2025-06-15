@@ -4,9 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>GrindUp | Premium Access</title>
-  <meta name="description" content="Access premium courses on Dropshipping, Facebook Ads, and more to elevate your hustle." />
-  <meta name="keywords" content="dropshipping, facebook ads, online courses, premium, hustle, grindup" />
-  <meta name="author" content="GrindUp" />
   <link href="https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     /* Reset */
@@ -23,16 +20,9 @@
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
-      scroll-behavior: smooth;
     }
 
-    /* Accessibility focus outline */
-    a:focus, button:focus, img:focus {
-      outline: 3px solid #f5f5f7;
-      outline-offset: 3px;
-    }
-
-    /* Logo with curved border, no color or glow */
+    /* Fixed top-left logo + brand */
     .header-logo {
       position: fixed;
       top: 20px;
@@ -43,17 +33,14 @@
       user-select: none;
       z-index: 1000;
       cursor: default;
-      border: 2px solid #f5f5f7;
-      border-radius: 12px 24px 12px 24px; /* subtle curved corners */
-      padding: 6px 12px;
-      background: transparent;
     }
     .header-logo img {
       height: 40px;
       width: auto;
       display: block;
+      border-radius: 8px; /* smooth curve, no border */
+      border: none;
       filter: none;
-      border-radius: 8px;
     }
     .header-logo .brand-name {
       font-weight: 700;
@@ -100,12 +87,48 @@
       display: inline-block;
       transition: background-color 0.3s ease;
       user-select: none;
-      cursor: pointer;
     }
-    .btn:hover, .btn:focus {
+    .btn:hover {
       background-color: #ddd;
-      outline: none;
     }
+
+    /* Urgency button below download */
+    .urgency {
+      background-color: #222;
+      color: #f5f5f7;
+      font-weight: 700;
+      padding: 14px 36px;
+      border-radius: 26px;
+      margin: 20px auto 0 auto;
+      max-width: 520px;
+      text-align: center;
+      cursor: pointer;
+      user-select: none;
+      letter-spacing: 0.05em;
+      box-shadow: 0 0 8px rgba(255,255,255,0.08);
+      transition: background-color 0.3s ease, transform 0.25s ease;
+      display: inline-block;
+      animation: pulse 2.5s infinite;
+    }
+    .urgency:hover {
+      background-color: #444;
+      transform: scale(1.05);
+      animation-play-state: paused;
+    }
+    .urgency span {
+      margin-left: 8px;
+      font-weight: 900;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        box-shadow: 0 0 8px rgba(255,255,255,0.08);
+      }
+      50% {
+        box-shadow: 0 0 20px rgba(255,255,255,0.2);
+      }
+    }
+
     .insta {
       margin-top: 28px;
       font-weight: 600;
@@ -117,7 +140,6 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      cursor: pointer;
     }
     .insta img {
       width: 20px;
@@ -176,13 +198,8 @@
       cursor: pointer;
       transition: transform 0.3s ease;
     }
-    .preview img:hover, .preview img:focus {
+    .preview img:hover {
       transform: scale(1.05);
-      outline: none;
-    }
-    .preview img:focus {
-      outline: 3px solid #f5f5f7;
-      outline-offset: 3px;
     }
 
     /* Modal for zoom preview */
@@ -203,81 +220,61 @@
       box-shadow: 0 0 30px rgba(255,255,255,0.2);
     }
 
-    /* Loading spinner for modal */
-    .spinner {
-      border: 6px solid #f3f3f3;
-      border-top: 6px solid #f5f5f7;
-      border-radius: 50%;
-      width: 48px;
-      height: 48px;
-      animation: spin 1s linear infinite;
-      position: absolute;
-      z-index: 2100;
-    }
-    @keyframes spin {
-      0% { transform: rotate(0deg);}
-      100% { transform: rotate(360deg);}
-    }
-
-    /* Urgency button on top */
-    .urgency {
-      background-color: #222;
-      color: #f5f5f7;
-      font-weight: 700;
-      padding: 14px 36px;
-      border-radius: 26px;
-      margin: 12px auto 40px auto;
-      max-width: 520px;
-      text-align: center;
-      cursor: pointer;
-      user-select: none;
-      letter-spacing: 0.05em;
-      box-shadow: 0 0 8px rgba(255,255,255,0.08);
-      transition: background-color 0.3s ease;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-    }
-    .urgency:hover, .urgency:focus {
-      background-color: #444;
-      outline: none;
-    }
-
     /* Thank you popup */
-    .thankyou-popup {
+    #thankyou-pop {
       position: fixed;
       bottom: 20px;
       right: 20px;
       background-color: #222;
-      border-radius: 14px;
-      padding: 20px 28px;
-      max-width: 320px;
-      box-shadow: 0 0 16px rgba(255,255,255,0.1);
       color: #f5f5f7;
+      padding: 20px 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(255,255,255,0.15);
+      max-width: 280px;
       font-weight: 600;
       font-size: 18px;
+      letter-spacing: 0.05em;
+      z-index: 3000;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      z-index: 3000;
+      animation: fadeInUp 0.5s ease forwards;
       user-select: none;
     }
-    .thankyou-popup button {
-      background: transparent;
+    #thankyou-pop button {
+      background: none;
       border: none;
       color: #f5f5f7;
       font-size: 22px;
-      cursor: pointer;
-      padding: 0;
-      line-height: 1;
       font-weight: 900;
+      cursor: pointer;
+      padding-left: 12px;
       user-select: none;
-      transition: color 0.2s ease;
+      line-height: 1;
     }
-    .thankyou-popup button:hover, .thankyou-popup button:focus {
+    #thankyou-pop button:hover {
       color: #ddd;
-      outline: none;
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes fadeOutDown {
+      0% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
     }
 
     /* Responsive */
@@ -291,30 +288,34 @@
       .header-logo {
         top: 12px;
         left: 12px;
-        padding: 4px 10px;
       }
-      .header-logo img {
-        height: 36px;
+      #thankyou-pop {
+        max-width: 90%;
+        bottom: 15px;
+        right: 15px;
+        font-size: 16px;
       }
     }
   </style>
 </head>
 <body>
 
-  <div class="header-logo" aria-label="GrindUp Logo and Brand Name">
+  <div class="header-logo" aria-label="Brand Logo and Name">
     <img src="grindup-logo.jpg" alt="GrindUp Logo" />
     <div class="brand-name">GRINDUP</div>
-  </div>
-
-  <div class="urgency" role="button" tabindex="0" aria-pressed="false" aria-label="Limited Time Free Access. Click to download now.">
-    👉🏽 Limited-Time Free Access – Grab it NOW!
   </div>
 
   <div class="card" role="main">
     <h1>Welcome to GrindUp</h1>
     <p>Your gateway to premium courses designed to elevate your hustle.</p>
-    <a href="https://mega.nz/folder/1Ks01TiR#noVGm5BlMoKMU4IzfAiJGQ" class="btn" target="_blank" rel="noopener noreferrer" aria-label="Download premium courses from Mega.nz">Download Now</a>
-    <a href="https://www.instagram.com/grind.up7/" class="insta" target="_blank" rel="noopener noreferrer" aria-label="Visit GrindUp Instagram profile">
+    <a href="https://mega.nz/folder/1Ks01TiR#noVGm5BlMoKMU4IzfAiJGQ" class="btn" target="_blank" rel="noopener noreferrer" id="downloadBtn">Download Now</a>
+    
+    <!-- Urgency button below download -->
+    <div class="urgency" id="urgencyBtn" tabindex="0" role="button" aria-pressed="false">
+      Limited-Time Free Access – Grab it NOW! <span>👉🏽</span>
+    </div>
+
+    <a href="https://www.instagram.com/grind.up7/" class="insta" target="_blank" rel="noopener noreferrer" aria-label="Instagram link to grind.up7">
       <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Logo" />@grind.up7
     </a>
   </div>
@@ -326,9 +327,9 @@
 
   <div class="section">
     <h2>Preview the Course</h2>
-    <div class="preview" role="list">
-      <img src="course1.jpg" alt="Course Screenshot 1" tabindex="0" loading="lazy" role="listitem" />
-      <img src="course2.jpg" alt="Course Screenshot 2" tabindex="0" loading="lazy" role="listitem" />
+    <div class="preview">
+      <img src="course1.jpg" alt="Course Screenshot 1" tabindex="0" />
+      <img src="course2.jpg" alt="Course Screenshot 2" tabindex="0" />
     </div>
   </div>
 
@@ -340,94 +341,72 @@
 
   <!-- Modal for zoom preview -->
   <div class="modal" id="modal" tabindex="-1" role="dialog" aria-hidden="true" aria-label="Image preview">
-    <div class="spinner" id="spinner" aria-hidden="true" style="display:none;"></div>
     <img id="modal-img" src="" alt="Zoomed course preview" />
   </div>
 
   <!-- Thank you popup -->
-  <div class="thankyou-popup" id="thankyou" role="alertdialog" aria-live="polite" aria-atomic="true">
-    Thank you for visiting!  
-    <button aria-label="Close thank you message" id="close-thankyou">&times;</button>
+  <div id="thankyou-pop" role="alert" aria-live="assertive">
+    Thank you for visiting! 
+    <button aria-label="Close thank you message" id="closeThankYouBtn">&times;</button>
   </div>
 
   <script>
-    // Modal image preview with loading spinner
+    // Modal zoom preview logic
     const modal = document.getElementById('modal');
     const modalImg = document.getElementById('modal-img');
-    const spinner = document.getElementById('spinner');
     const previews = document.querySelectorAll('.preview img');
 
     previews.forEach(img => {
       img.addEventListener('click', () => {
-        openModal(img.src, img.alt);
+        modalImg.src = img.src;
+        modal.style.display = 'flex';
+        modal.focus();
       });
       img.addEventListener('keydown', e => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
-          openModal(img.src, img.alt);
+          modalImg.src = img.src;
+          modal.style.display = 'flex';
+          modal.focus();
         }
       });
     });
 
-    function openModal(src, alt) {
-      modal.style.display = 'flex';
-      modal.setAttribute('aria-hidden', 'false');
-      modalImg.style.display = 'none';
-      spinner.style.display = 'block';
-      modalImg.src = src;
-      modalImg.alt = alt;
-      modal.focus();
-    }
-
-    modalImg.onload = () => {
-      spinner.style.display = 'none';
-      modalImg.style.display = 'block';
-    };
-
     modal.addEventListener('click', () => {
-      closeModal();
+      modal.style.display = 'none';
+      modalImg.src = '';
     });
-
     modal.addEventListener('keydown', e => {
       if (e.key === 'Escape') {
-        closeModal();
+        modal.style.display = 'none';
+        modalImg.src = '';
       }
     });
 
-    function closeModal() {
-      modal.style.display = 'none';
-      modal.setAttribute('aria-hidden', 'true');
-      modalImg.src = '';
-      spinner.style.display = 'none';
-    }
-
-    // Urgency button opens download link
-    const urgencyBtn = document.querySelector('.urgency');
+    // Urgency button click opens download link
+    const urgencyBtn = document.getElementById('urgencyBtn');
     urgencyBtn.addEventListener('click', () => {
       window.open('https://mega.nz/folder/1Ks01TiR#noVGm5BlMoKMU4IzfAiJGQ', '_blank');
     });
     urgencyBtn.addEventListener('keydown', e => {
-      if (e.key === 'Enter' || e.key === ' ') {
+      if(e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
         urgencyBtn.click();
       }
     });
 
-    // Thank you popup close button
-    const thankyouPopup = document.getElementById('thankyou');
-    const closeThankyouBtn = document.getElementById('close-thankyou');
-    closeThankyouBtn.addEventListener('click', () => {
-      thankyouPopup.style.display = 'none';
-    });
-  </script>
+    // Thank you popup close logic
+    const thankyouPop = document.getElementById('thankyou-pop');
+    const closeThankYouBtn = document.getElementById('closeThankYouBtn');
 
-  <!-- Google Analytics (replace YOUR-GA-ID with actual tracking ID) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR-GA-ID"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'YOUR-GA-ID');
+    closeThankYouBtn.addEventListener('click', () => {
+      // Animate fadeOut
+      thankyouPop.style.animation = 'fadeOutDown 0.5s ease forwards';
+      // After animation ends, hide popup
+      thankyouPop.addEventListener('animationend', () => {
+        thankyouPop.style.display = 'none';
+      }, { once: true });
+    });
   </script>
 
 </body>
