@@ -2,253 +2,263 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>GrindUp | Exclusive Course Access</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;900&display=swap" rel="stylesheet" />
   <style>
+    /* Reset & base */
     * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+      margin: 0; padding: 0; box-sizing: border-box;
     }
-
     body {
       font-family: 'Montserrat', sans-serif;
-      background-image: url('bg.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
+      background:
+        radial-gradient(circle at center, rgba(0,0,0,0.85), rgba(0,0,0,0.95) 75%),
+        url('bg.jpg') center/cover no-repeat;
       min-height: 100vh;
-      color: #fff;
+      color: #eee;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      flex-direction: column;
-      text-align: center;
       padding: 20px;
-      backdrop-filter: brightness(0.4);
       position: relative;
     }
 
-    /* Top-left fixed logo bar */
+    /* Ultra luxury fixed top-left bar - no border */
     .header-logo {
       position: fixed;
-      top: 20px;
-      left: 20px;
-      background: rgba(30, 30, 30, 0.75);
-      padding: 12px 28px;
+      top: 24px;
+      left: 24px;
       display: flex;
       align-items: center;
-      gap: 18px;
-      box-shadow: 0 0 15px rgba(200, 200, 200, 0.25);
-      backdrop-filter: blur(10px);
-      z-index: 1000;
+      gap: 16px;
+      padding: 10px 28px;
+      background: rgba(20, 20, 20, 0.45);
+      backdrop-filter: blur(14px);
+      box-shadow:
+        0 4px 15px rgba(255 215 0 / 0.22),
+        inset 0 0 10px rgba(255 215 0 / 0.10);
+      border-radius: 12px;
       cursor: default;
-      border: 1.5px solid rgba(200, 200, 200, 0.3);
-      border-radius: 6px;
+      user-select: none;
       transition: box-shadow 0.3s ease;
+      z-index: 1100;
+      /* No border here as requested */
     }
-
     .header-logo:hover {
-      box-shadow: 0 0 25px rgba(220, 220, 220, 0.5);
+      box-shadow:
+        0 6px 30px rgba(255 215 0 / 0.35),
+        inset 0 0 20px rgba(255 215 0 / 0.15);
     }
 
     .header-logo img {
-      height: 44px;
-      border-radius: 6px;
-      border: 1.5px solid rgba(220, 220, 220, 0.4);
-      box-shadow: 0 0 8px rgba(220, 220, 220, 0.15);
+      height: 48px;
+      border-radius: 8px;
+      filter: drop-shadow(0 0 6px rgba(255 215 0, 0.3));
       display: block;
     }
 
     .header-logo .brand-name {
-      font-weight: 700;
-      font-size: 21px;
-      color: #e0e0e0;
-      letter-spacing: 3px;
+      font-weight: 900;
+      font-size: 22px;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
+      background: linear-gradient(45deg, #FFD700, #FFC107 80%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
       user-select: none;
       font-family: 'Montserrat', sans-serif;
-      text-shadow: 0 0 4px rgba(255, 255, 255, 0.15);
     }
 
+    /* Main card */
     .card {
-      background: rgba(0, 0, 0, 0.85);
-      padding: 40px;
-      border-radius: 20px;
-      max-width: 500px;
+      background: rgba(12, 12, 12, 0.85);
+      padding: 48px 50px;
+      border-radius: 24px;
+      max-width: 520px;
       width: 100%;
-      box-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
-      animation: fadeIn 1.2s ease-in-out;
-      margin-bottom: 30px;
+      box-shadow:
+        0 0 40px rgba(255, 215, 0, 0.2),
+        inset 0 0 20px rgba(255, 215, 0, 0.08);
+      animation: fadeIn 1.3s ease forwards;
+      text-align: center;
+      user-select: none;
     }
-
-    h1 {
-      font-size: 32px;
-      font-weight: 800;
-      margin-bottom: 20px;
-      letter-spacing: 1px;
+    .card h1 {
+      font-size: 36px;
+      font-weight: 900;
+      margin-bottom: 28px;
+      letter-spacing: 0.1em;
+      color: #FFD700;
+      text-shadow: 0 0 12px rgba(255, 215, 0, 0.7);
     }
-
-    p {
-      font-size: 16px;
+    .card p {
+      font-size: 18px;
       color: #ccc;
-      margin-bottom: 30px;
+      margin-bottom: 40px;
+      line-height: 1.5;
+      font-weight: 600;
     }
-
     .btn {
+      background: linear-gradient(135deg, #FFD700, #FFA500);
+      padding: 18px 44px;
+      border-radius: 28px;
+      font-weight: 800;
+      font-size: 18px;
+      color: #111;
+      text-decoration: none;
+      box-shadow: 0 8px 20px rgba(255, 215, 0, 0.4);
+      transition: all 0.3s ease;
       display: inline-block;
-      background: linear-gradient(135deg, #fff, #ddd);
-      color: #000;
-      font-weight: 600;
-      text-decoration: none;
-      padding: 14px 30px;
-      border-radius: 12px;
-      font-size: 16px;
-      transition: 0.3s ease;
+      user-select: none;
     }
-
     .btn:hover {
-      background: linear-gradient(135deg, #e5e5e5, #cfcfcf);
+      filter: brightness(1.1);
+      box-shadow: 0 12px 30px rgba(255, 215, 0, 0.65);
+      transform: translateY(-3px);
     }
 
+    /* Instagram link */
     .insta {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 25px;
-      font-size: 14px;
-      color: #fff;
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    .insta img {
-      width: 20px;
-      height: 20px;
-    }
-
-    .section {
-      max-width: 700px;
-      margin-top: 40px;
-      background: rgba(0, 0, 0, 0.6);
-      padding: 30px;
-      border-radius: 16px;
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.04);
-    }
-
-    .section h2 {
-      font-size: 24px;
-      margin-bottom: 15px;
-      font-weight: 700;
-    }
-
-    .section p {
+      margin-top: 30px;
       font-size: 15px;
-      color: #ccc;
+      font-weight: 700;
+      color: #FFD700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      user-select: none;
+      letter-spacing: 0.05em;
+    }
+    .insta img {
+      width: 22px;
+      height: 22px;
+      filter: drop-shadow(0 0 2px #FFD700);
+    }
+
+    /* Sections */
+    .section {
+      max-width: 720px;
+      margin-top: 48px;
+      background: rgba(18, 18, 18, 0.75);
+      padding: 36px 40px;
+      border-radius: 18px;
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.15);
+      user-select: none;
+    }
+    .section h2 {
+      font-weight: 900;
+      font-size: 26px;
+      margin-bottom: 18px;
+      letter-spacing: 0.1em;
+      color: #FFD700;
+      text-shadow: 0 0 6px rgba(255, 215, 0, 0.6);
+    }
+    .section p {
+      font-weight: 600;
+      font-size: 16px;
+      color: #ddd;
       line-height: 1.6;
     }
-
     blockquote {
-      font-size: 16px;
       font-style: italic;
-      color: #eee;
-      margin: 20px 0;
+      font-size: 17px;
+      color: #fff1a8;
+      margin: 20px 0 12px;
+      text-shadow: 0 0 4px #ffe066aa;
+      user-select: none;
     }
 
+    /* Urgency button */
     .urgency {
-      background: #ff0000;
-      color: white;
-      font-weight: bold;
-      padding: 10px 20px;
-      border-radius: 10px;
-      margin-top: 30px;
-      animation: pulse 1.5s infinite;
+      margin-top: 40px;
+      background: #b37f00;
+      padding: 14px 36px;
+      border-radius: 30px;
+      font-weight: 800;
+      font-size: 18px;
+      color: #fff;
       cursor: pointer;
+      box-shadow: 0 0 25px #ffd700aa;
+      user-select: none;
+      transition: box-shadow 0.4s ease;
+      display: inline-block;
+    }
+    .urgency:hover {
+      box-shadow: 0 0 45px #ffd700ff;
     }
 
+    /* Preview images */
     .preview {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 15px;
-      margin-top: 30px;
+      gap: 18px;
+      margin-top: 38px;
     }
-
     .preview img {
-      width: 180px;
-      border-radius: 10px;
-      box-shadow: 0 0 12px rgba(255, 255, 255, 0.1);
+      width: 190px;
+      border-radius: 14px;
       cursor: zoom-in;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.25);
       transition: transform 0.3s ease;
+      user-select: none;
     }
-
     .preview img:hover {
-      transform: scale(1.05);
+      transform: scale(1.07);
+      box-shadow: 0 0 35px rgba(255, 215, 0, 0.45);
     }
 
-    /* Fade-in animation */
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* Pulse animation for urgency button */
-    @keyframes pulse {
-      0% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.05); opacity: 0.85; }
-      100% { transform: scale(1); opacity: 1; }
-    }
-
-    /* Modal styles for preview zoom */
+    /* Modal */
     .modal {
-      display: none; 
-      position: fixed; 
-      z-index: 1500; 
-      padding-top: 60px; 
+      display: none;
+      position: fixed;
+      z-index: 1500;
       left: 0; top: 0;
-      width: 100%; height: 100%; 
-      overflow: auto; 
-      background-color: rgba(0,0,0,0.9);
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.95);
+      align-items: center;
+      justify-content: center;
     }
-
     .modal-content {
-      margin: auto;
-      display: block;
       max-width: 90%;
       max-height: 90%;
-      border-radius: 12px;
-      box-shadow: 0 0 40px rgba(255,255,255,0.3);
+      border-radius: 18px;
+      box-shadow: 0 0 60px rgba(255, 215, 0, 0.7);
       animation: fadeIn 0.6s ease;
+      user-select: none;
     }
-
     .modal-close {
-      position: absolute;
-      top: 25px;
+      position: fixed;
+      top: 28px;
       right: 40px;
-      color: #fff;
-      font-size: 40px;
-      font-weight: bold;
+      font-size: 42px;
+      font-weight: 900;
+      color: #ffd700cc;
       cursor: pointer;
       user-select: none;
       transition: color 0.3s ease;
+      z-index: 1600;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .modal-close:hover {
+      color: #fff;
     }
 
-    .modal-close:hover {
-      color: #bbb;
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
 
-  <!-- Fixed logo bar -->
+  <!-- Top-left luxury logo bar -->
   <div class="header-logo">
     <img src="grindup-logo.jpg" alt="GrindUp Logo" />
     <div class="brand-name">GrindUp</div>
@@ -256,10 +266,10 @@
 
   <div class="card">
     <h1>Welcome to GrindUp</h1>
-    <p>This is your gateway to the most exclusive course built for future millionaires. Click below and begin your journey to the top.</p>
-    <a href="https://mega.nz/folder/1Ks01TiR#noVGm5BlMoKMU4IzfAiJGQ" class="btn" target="_blank">Download Now</a>
-    <a href="https://www.instagram.com/grind.up7/" class="insta" target="_blank">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Logo">@grind.up7
+    <p>Your gateway to exclusive, premium courses designed to elevate your hustle and turn dreams into reality.</p>
+    <a href="https://mega.nz/folder/1Ks01TiR#noVGm5BlMoKMU4IzfAiJGQ" class="btn" target="_blank" rel="noopener noreferrer">Download Now</a>
+    <a href="https://www.instagram.com/grind.up7/" class="insta" target="_blank" rel="noopener noreferrer">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Logo" />@grind.up7
     </a>
     <div class="urgency" onclick="window.open('https://mega.nz/folder/1Ks01TiR#noVGm5BlMoKMU4IzfAiJGQ', '_blank')">
       Limited-Time Free Access – Grab it NOW!
@@ -268,7 +278,7 @@
 
   <div class="section">
     <h2>What You’ll Learn</h2>
-    <p>This package contains multiple high-value courses including Dropshipping, Facebook Ads, and more – everything you need to kickstart your online income journey.</p>
+    <p>High-value courses in Dropshipping, Facebook Ads, and much more — everything you need to kickstart your journey to success.</p>
   </div>
 
   <div class="section">
@@ -285,35 +295,31 @@
     <p>- Winston Churchill</p>
   </div>
 
-  <!-- Modal for image preview zoom -->
+  <!-- Modal for image zoom -->
   <div id="imgModal" class="modal">
     <span class="modal-close" id="modalClose">&times;</span>
     <img class="modal-content" id="modalImg" />
   </div>
 
   <script>
-    // Zoom preview images on click
     const modal = document.getElementById("imgModal");
     const modalImg = document.getElementById("modalImg");
     const modalClose = document.getElementById("modalClose");
 
     document.querySelectorAll('.preview-img').forEach(img => {
       img.addEventListener('click', () => {
-        modal.style.display = "block";
+        modal.style.display = "flex";
         modalImg.src = img.src;
         modalImg.alt = img.alt;
       });
     });
 
-    modalClose.onclick = function() {
-      modal.style.display = "none";
-    }
+    modalClose.onclick = () => modal.style.display = "none";
 
-    window.onclick = function(event) {
-      if (event.target === modal) {
-        modal.style.display = "none";
-      }
-    }
+    window.onclick = e => {
+      if (e.target === modal) modal.style.display = "none";
+    };
   </script>
+
 </body>
 </html>
