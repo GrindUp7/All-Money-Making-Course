@@ -125,9 +125,16 @@
       font-weight: bold;
       padding: 10px 20px;
       border-radius: 10px;
-      margin-top: 30px;
+      margin-top: 20px;
       animation: pulse 1.5s infinite;
       cursor: pointer;
+    }
+
+    #countdown {
+      font-size: 18px;
+      font-weight: 600;
+      color: #ff4444;
+      margin-top: 15px;
     }
 
     @keyframes fadeIn {
@@ -158,6 +165,7 @@
     <a href="https://www.instagram.com/grind.up7/" class="insta" target="_blank">
       <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Logo">@grind.up7
     </a>
+    <div id="countdown">Offer ends in: <span id="timer">Loading...</span></div>
     <div class="urgency" onclick="window.open('https://mega.nz/folder/1Ks01TiR#noVGm5BlMoKMU4IzfAiJGQ', '_blank')">
       Limited-Time Free Access – Grab it NOW!
     </div>
@@ -173,5 +181,28 @@
     <blockquote>“Success is not final, failure is not fatal: it is the courage to continue that counts.”</blockquote>
     <p>- Winston Churchill</p>
   </div>
+
+  <script>
+    const end = new Date();
+    end.setHours(end.getHours() + 24);
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = end.getTime() - now;
+
+      if (distance < 0) {
+        document.getElementById("timer").innerHTML = "Expired";
+        return;
+      }
+
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("timer").innerHTML = `${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    setInterval(updateCountdown, 1000);
+  </script>
 </body>
 </html>
