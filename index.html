@@ -38,8 +38,6 @@
       height: 40px;
       width: auto;
       display: block;
-      border-radius: 8px; /* smooth curve, no border */
-      border: none;
       filter: none;
     }
     .header-logo .brand-name {
@@ -91,44 +89,6 @@
     .btn:hover {
       background-color: #ddd;
     }
-
-    /* Urgency button below download */
-    .urgency {
-      background-color: #222;
-      color: #f5f5f7;
-      font-weight: 700;
-      padding: 14px 36px;
-      border-radius: 26px;
-      margin: 20px auto 0 auto;
-      max-width: 520px;
-      text-align: center;
-      cursor: pointer;
-      user-select: none;
-      letter-spacing: 0.05em;
-      box-shadow: 0 0 8px rgba(255,255,255,0.08);
-      transition: background-color 0.3s ease, transform 0.25s ease;
-      display: inline-block;
-      animation: pulse 2.5s infinite;
-    }
-    .urgency:hover {
-      background-color: #444;
-      transform: scale(1.05);
-      animation-play-state: paused;
-    }
-    .urgency span {
-      margin-left: 8px;
-      font-weight: 900;
-    }
-
-    @keyframes pulse {
-      0%, 100% {
-        box-shadow: 0 0 8px rgba(255,255,255,0.08);
-      }
-      50% {
-        box-shadow: 0 0 20px rgba(255,255,255,0.2);
-      }
-    }
-
     .insta {
       margin-top: 28px;
       font-weight: 600;
@@ -220,61 +180,93 @@
       box-shadow: 0 0 30px rgba(255,255,255,0.2);
     }
 
-    /* Thank you popup */
-    #thankyou-pop {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #222;
-      color: #f5f5f7;
-      padding: 20px 30px;
-      border-radius: 12px;
-      box-shadow: 0 0 12px rgba(255,255,255,0.15);
-      max-width: 280px;
-      font-weight: 600;
-      font-size: 18px;
-      letter-spacing: 0.05em;
-      z-index: 3000;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      animation: fadeInUp 0.5s ease forwards;
+    /* Urgency and timer container */
+    .urgency-container {
+      max-width: 520px;
+      width: 100%;
+      margin: 20px auto 0 auto;
+      text-align: center;
       user-select: none;
-    }
-    #thankyou-pop button {
-      background: none;
-      border: none;
-      color: #f5f5f7;
-      font-size: 22px;
-      font-weight: 900;
-      cursor: pointer;
-      padding-left: 12px;
-      user-select: none;
-      line-height: 1;
-    }
-    #thankyou-pop button:hover {
-      color: #ddd;
     }
 
-    @keyframes fadeInUp {
-      0% {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      100% {
+    /* Countdown timer style */
+    #countdown {
+      font-weight: 700;
+      font-size: 20px;
+      color: #ffbf00; /* gold-ish */
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
         opacity: 1;
-        transform: translateY(0);
+      }
+      50% {
+        opacity: 0.7;
       }
     }
-    @keyframes fadeOutDown {
-      0% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-      100% {
+
+    .urgency {
+      background-color: #222;
+      color: #f5f5f7;
+      font-weight: 700;
+      padding: 14px 36px;
+      border-radius: 26px;
+      cursor: pointer;
+      letter-spacing: 0.05em;
+      box-shadow: 0 0 8px rgba(255,255,255,0.08);
+      transition: background-color 0.3s ease;
+      display: inline-block;
+      user-select: none;
+    }
+    .urgency:hover {
+      background-color: #444;
+    }
+
+    /* Thank You popup */
+    #thankyou-popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(1);
+      background-color: #111;
+      border-radius: 16px;
+      padding: 32px 44px;
+      max-width: 400px;
+      width: 90%;
+      color: #f5f5f7;
+      box-shadow: 0 0 30px rgba(255,255,255,0.1);
+      text-align: center;
+      z-index: 3000;
+      user-select: none;
+      animation: fadeInScale 0.4s ease forwards;
+    }
+    @keyframes fadeInScale {
+      from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translate(-50%, -50%) scale(0.9);
       }
+      to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+    #thankyou-popup button.close-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: none;
+      border: none;
+      color: #ccc;
+      font-size: 22px;
+      cursor: pointer;
+      user-select: none;
+      transition: color 0.3s ease;
+    }
+    #thankyou-popup button.close-btn:hover {
+      color: #fff;
     }
 
     /* Responsive */
@@ -282,40 +274,41 @@
       .preview img {
         width: 140px;
       }
-      .card, .section, .urgency {
+      .card, .section, .urgency-container {
         padding: 28px 24px;
       }
       .header-logo {
         top: 12px;
         left: 12px;
       }
-      #thankyou-pop {
+      #thankyou-popup {
         max-width: 90%;
-        bottom: 15px;
-        right: 15px;
-        font-size: 16px;
+        padding: 24px 28px;
       }
     }
   </style>
 </head>
 <body>
 
-  <div class="header-logo" aria-label="Brand Logo and Name">
+  <div class="header-logo">
     <img src="grindup-logo.jpg" alt="GrindUp Logo" />
     <div class="brand-name">GRINDUP</div>
   </div>
 
-  <div class="card" role="main">
+  <div class="card">
     <h1>Welcome to GrindUp</h1>
     <p>Your gateway to premium courses designed to elevate your hustle.</p>
-    <a href="https://mega.nz/folder/1Ks01TiR#noVGm5BlMoKMU4IzfAiJGQ" class="btn" target="_blank" rel="noopener noreferrer" id="downloadBtn">Download Now</a>
+    <a href="https://mega.nz/folder/1Ks01TiR#noVGm5BlMoKMU4IzfAiJGQ" class="btn" target="_blank" rel="noopener noreferrer">Download Now</a>
     
-    <!-- Urgency button below download -->
-    <div class="urgency" id="urgencyBtn" tabindex="0" role="button" aria-pressed="false">
-      Limited-Time Free Access – Grab it NOW! <span>👉🏽</span>
+    <!-- Urgency container with timer and button -->
+    <div class="urgency-container">
+      <div id="countdown" aria-live="polite" aria-atomic="true">Loading timer...</div>
+      <div class="urgency" onclick="window.open('https://mega.nz/folder/1Ks01TiR#noVGm5BlMoKMU4IzfAiJGQ', '_blank')">
+        Limited-Time Free Access – Grab it NOW! 👉🏽
+      </div>
     </div>
 
-    <a href="https://www.instagram.com/grind.up7/" class="insta" target="_blank" rel="noopener noreferrer" aria-label="Instagram link to grind.up7">
+    <a href="https://www.instagram.com/grind.up7/" class="insta" target="_blank" rel="noopener noreferrer">
       <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Logo" />@grind.up7
     </a>
   </div>
@@ -339,19 +332,20 @@
     <p>- Winston Churchill</p>
   </div>
 
+  <!-- Thank You popup -->
+  <div id="thankyou-popup" role="dialog" aria-modal="true" aria-labelledby="thankyou-title" aria-describedby="thankyou-desc">
+    <button class="close-btn" aria-label="Close thank you message">&times;</button>
+    <h3 id="thankyou-title">Thank You!</h3>
+    <p id="thankyou-desc">We appreciate you grabbing this offer. Check your downloads and enjoy the courses!</p>
+  </div>
+
   <!-- Modal for zoom preview -->
   <div class="modal" id="modal" tabindex="-1" role="dialog" aria-hidden="true" aria-label="Image preview">
     <img id="modal-img" src="" alt="Zoomed course preview" />
   </div>
 
-  <!-- Thank you popup -->
-  <div id="thankyou-pop" role="alert" aria-live="assertive">
-    Thank you for visiting! 
-    <button aria-label="Close thank you message" id="closeThankYouBtn">&times;</button>
-  </div>
-
   <script>
-    // Modal zoom preview logic
+    // Modal preview for course images
     const modal = document.getElementById('modal');
     const modalImg = document.getElementById('modal-img');
     const previews = document.querySelectorAll('.preview img');
@@ -383,30 +377,42 @@
       }
     });
 
-    // Urgency button click opens download link
-    const urgencyBtn = document.getElementById('urgencyBtn');
-    urgencyBtn.addEventListener('click', () => {
-      window.open('https://mega.nz/folder/1Ks01TiR#noVGm5BlMoKMU4IzfAiJGQ', '_blank');
-    });
-    urgencyBtn.addEventListener('keydown', e => {
-      if(e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        urgencyBtn.click();
+    // Countdown timer logic - 24 hours from page load
+    const countdownEl = document.getElementById('countdown');
+    // Set timer to 24 hours (in milliseconds)
+    const countdownDuration = 24 * 60 * 60 * 1000;
+    const endTime = new Date().getTime() + countdownDuration;
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = endTime - now;
+
+      if (distance <= 0) {
+        countdownEl.textContent = "Offer expired!";
+        return;
       }
+
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000*60*60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000*60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdownEl.textContent = `⏳ Time Left: ${hours.toString().padStart(2,'0')}h ${minutes.toString().padStart(2,'0')}m ${seconds.toString().padStart(2,'0')}s`;
+    }
+
+    updateCountdown();
+    const countdownInterval = setInterval(() => {
+      updateCountdown();
+    }, 1000);
+
+    // Thank you popup logic
+    const thankyouPopup = document.getElementById('thankyou-popup');
+    const closeBtn = thankyouPopup.querySelector('.close-btn');
+
+    closeBtn.addEventListener('click', () => {
+      thankyouPopup.style.display = 'none';
     });
 
-    // Thank you popup close logic
-    const thankyouPop = document.getElementById('thankyou-pop');
-    const closeThankYouBtn = document.getElementById('closeThankYouBtn');
-
-    closeThankYouBtn.addEventListener('click', () => {
-      // Animate fadeOut
-      thankyouPop.style.animation = 'fadeOutDown 0.5s ease forwards';
-      // After animation ends, hide popup
-      thankyouPop.addEventListener('animationend', () => {
-        thankyouPop.style.display = 'none';
-      }, { once: true });
-    });
+    // The thank you popup remains visible until closed by user
   </script>
 
 </body>
