@@ -75,16 +75,20 @@
     }
 
     .insta {
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
       margin-top: 25px;
       font-size: 14px;
-      color: #999;
+      color: #fff;
       text-decoration: none;
-      transition: 0.3s;
+      font-weight: 600;
     }
 
-    .insta:hover {
-      color: #fff;
+    .insta img {
+      width: 20px;
+      height: 20px;
     }
 
     .section {
@@ -115,6 +119,16 @@
       margin: 20px 0;
     }
 
+    .urgency {
+      background: #ff0000;
+      color: white;
+      font-weight: bold;
+      padding: 10px 20px;
+      border-radius: 10px;
+      margin-top: 30px;
+      animation: pulse 1.5s infinite;
+    }
+
     @keyframes fadeIn {
       from {
         opacity: 0;
@@ -125,6 +139,12 @@
         transform: translateY(0);
       }
     }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.05); opacity: 0.85; }
+      100% { transform: scale(1); opacity: 1; }
+    }
   </style>
 </head>
 <body>
@@ -134,21 +154,21 @@
     <h1>Welcome to GrindUp</h1>
     <p>This is your gateway to the most exclusive course built for future millionaires. Click below and begin your journey to the top.</p>
     <a href="https://mega.nz/folder/1Ks01TiR#noVGm5BlMoKMU4IzfAiJGQ" class="btn" target="_blank">Download Now</a>
-    <a href="https://www.instagram.com/grind.up7/" class="insta" target="_blank">@grind.up7</a>
+    <a href="https://www.instagram.com/grind.up7/" class="insta" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Logo">@grind.up7
+    </a>
+    <div class="urgency">Limited-Time Free Access – Grab it NOW!</div>
   </div>
 
   <div class="section">
     <h2>What You’ll Learn</h2>
-    <p>✔ How to launch and automate a digital product business<br>
-       ✔ Step-by-step AI tools and systems to build cashflow<br>
-       ✔ Secrets behind viral growth on social platforms<br>
-       ✔ Monetization strategies to earn without followers or investment</p>
+    <p>This package contains multiple high-value courses including Dropshipping, Facebook Ads, and more – everything you need to kickstart your online income journey.</p>
   </div>
 
   <div class="section">
     <h2>Success Quote</h2>
-    <blockquote>“This course gave me the mindset and tools to launch my first online income stream in 7 days. Life-changing.”</blockquote>
-    <p>- A GrindUp Student</p>
+    <blockquote>“Success is not final, failure is not fatal: it is the courage to continue that counts.”</blockquote>
+    <p>- Winston Churchill</p>
   </div>
 </body>
 </html>
