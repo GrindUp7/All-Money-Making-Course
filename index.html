@@ -20,6 +20,7 @@
       align-items: center;
       justify-content: flex-start;
     }
+
     .header-logo {
       position: fixed;
       top: 20px;
@@ -31,11 +32,13 @@
       z-index: 1000;
       cursor: default;
     }
-    .header-logo img {
-      height: 40px;
-      width: auto;
-      display: block;
-      filter: none;
+    .logo-rounded-border {
+      border: 1.5px solid currentColor;
+      padding: 6px;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
     .header-logo .brand-name {
       font-weight: 700;
@@ -44,6 +47,41 @@
       text-transform: uppercase;
       color: #f5f5f7;
     }
+    .header-logo img {
+      height: 40px;
+      width: auto;
+      display: block;
+    }
+
+    .urgency {
+      background-color: #222;
+      color: #f5f5f7;
+      font-weight: 700;
+      padding: 14px 36px;
+      border-radius: 26px;
+      text-align: center;
+      cursor: pointer;
+      user-select: none;
+      letter-spacing: 0.05em;
+      box-shadow: 0 0 8px rgba(255,255,255,0.08);
+      transition: background-color 0.3s ease;
+      margin-top: 100px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .urgency:hover {
+      background-color: #444;
+    }
+    .urgency .pointer {
+      animation: bounce 1.2s infinite ease-in-out;
+      display: inline-block;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(6px); }
+    }
+
     .card {
       background-color: #111;
       border-radius: 14px;
@@ -52,9 +90,8 @@
       width: 100%;
       box-shadow: 0 0 24px rgba(255,255,255,0.05);
       text-align: center;
-      margin-top: 100px;
       user-select: none;
-      animation: fadeIn 1s ease;
+      margin-top: 32px;
     }
     .card h1 {
       font-weight: 700;
@@ -80,30 +117,10 @@
       text-decoration: none;
       display: inline-block;
       transition: background-color 0.3s ease;
-      cursor: pointer;
+      user-select: none;
     }
     .btn:hover {
       background-color: #ddd;
-    }
-    .urgency {
-      background-color: #222;
-      color: #f5f5f7;
-      font-weight: 700;
-      padding: 14px 36px;
-      border-radius: 26px;
-      margin-top: 28px;
-      max-width: 520px;
-      text-align: center;
-      cursor: pointer;
-      user-select: none;
-      letter-spacing: 0.05em;
-      box-shadow: 0 0 8px rgba(255,255,255,0.08);
-      transition: background-color 0.3s ease, transform 0.3s ease;
-      animation: pulse 2s infinite;
-    }
-    .urgency:hover {
-      background-color: #444;
-      transform: scale(1.02);
     }
     .insta {
       margin-top: 28px;
@@ -120,8 +137,8 @@
     .insta img {
       width: 20px;
       height: 20px;
-      filter: none;
     }
+
     .section {
       max-width: 700px;
       width: 100%;
@@ -156,6 +173,7 @@
       text-align: right;
       margin-top: -12px;
     }
+
     .preview {
       display: flex;
       flex-wrap: wrap;
@@ -173,6 +191,7 @@
     .preview img:hover {
       transform: scale(1.05);
     }
+
     .modal {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
@@ -190,53 +209,60 @@
       box-shadow: 0 0 30px rgba(255,255,255,0.2);
     }
 
-    /* Thank you popup */
-    .thankyou-popup {
+    .popup {
       position: fixed;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      background: #111;
-      color: #fff;
-      padding: 28px 36px;
-      border-radius: 14px;
-      box-shadow: 0 0 24px rgba(255,255,255,0.1);
-      display: none;
+      bottom: 20px;
+      right: 20px;
+      background-color: #111;
+      color: #f5f5f7;
+      border: 1px solid #333;
+      border-radius: 10px;
+      padding: 16px 20px;
+      box-shadow: 0 0 20px rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      gap: 10px;
       z-index: 3000;
-      text-align: center;
-      animation: fadeIn 0.4s ease;
+    }
+    .popup button {
+      background: none;
+      border: none;
+      color: #f5f5f7;
+      font-size: 16px;
+      cursor: pointer;
     }
 
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.03); }
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
     @media (max-width: 600px) {
-      .preview img { width: 140px; }
-      .card, .section, .urgency { padding: 28px 24px; }
-      .header-logo { top: 12px; left: 12px; }
+      .preview img {
+        width: 140px;
+      }
+      .card, .section, .urgency {
+        padding: 28px 24px;
+      }
+      .header-logo {
+        top: 12px;
+        left: 12px;
+      }
     }
   </style>
 </head>
 <body>
 
   <div class="header-logo">
-    <img src="grindup-logo.jpg" alt="GrindUp Logo" />
+    <div class="logo-rounded-border">
+      <img src="grindup-logo.jpg" alt="GrindUp Logo" />
+    </div>
     <div class="brand-name">GRINDUP</div>
+  </div>
+
+  <div class="urgency" onclick="window.open('https://mega.nz/folder/1Ks01TiR#noVGm5BlMoKMU4IzfAiJGQ', '_blank')">
+    <span class="pointer">👉🏽</span> Limited-Time Free Access – Grab it NOW!
   </div>
 
   <div class="card">
     <h1>Welcome to GrindUp</h1>
     <p>Your gateway to premium courses designed to elevate your hustle.</p>
-    <a href="https://mega.nz/folder/1Ks01TiR#noVGm5BlMoKMU4IzfAiJGQ" class="btn" onclick="showThankYou()" target="_blank" rel="noopener noreferrer">Download Now</a>
-
-    <div class="urgency" onclick="window.open('https://mega.nz/folder/1Ks01TiR#noVGm5BlMoKMU4IzfAiJGQ', '_blank')">
-    👉🏽 48HRS Limited Offer – Grab it NOW!
-    </div>
-
+    <a href="https://mega.nz/folder/1Ks01TiR#noVGm5BlMoKMU4IzfAiJGQ" class="btn" target="_blank" rel="noopener noreferrer">Download Now</a>
     <a href="https://www.instagram.com/grind.up7/" class="insta" target="_blank" rel="noopener noreferrer">
       <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Logo" />@grind.up7
     </a>
@@ -261,19 +287,21 @@
     <p>- Winston Churchill</p>
   </div>
 
-  <div class="modal" id="modal" tabindex="-1" aria-hidden="true" aria-label="Image preview">
+  <!-- Zoom Modal -->
+  <div class="modal" id="modal" tabindex="-1" role="dialog" aria-hidden="true" aria-label="Image preview">
     <img id="modal-img" src="" alt="Zoomed course preview" />
   </div>
 
-  <div class="thankyou-popup" id="thankyouPopup">
-    ✅ Thanks for downloading! You're one step closer to greatness.
+  <!-- Thank You Popup -->
+  <div class="popup" id="popup">
+    <span>Thank you for visiting GrindUp!</span>
+    <button onclick="document.getElementById('popup').style.display='none'">✖</button>
   </div>
 
   <script>
     const modal = document.getElementById('modal');
     const modalImg = document.getElementById('modal-img');
     const previews = document.querySelectorAll('.preview img');
-    const thankyouPopup = document.getElementById('thankyouPopup');
 
     previews.forEach(img => {
       img.addEventListener('click', () => {
@@ -301,13 +329,6 @@
         modalImg.src = '';
       }
     });
-
-    function showThankYou() {
-      thankyouPopup.style.display = 'block';
-      setTimeout(() => {
-        thankyouPopup.style.display = 'none';
-      }, 3000);
-    }
   </script>
 
 </body>
