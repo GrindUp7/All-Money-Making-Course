@@ -4,8 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>GrindUp | Premium Access</title>
+  <meta name="description" content="Access premium courses on Dropshipping, Facebook Ads, and more to elevate your hustle." />
+  <meta name="keywords" content="dropshipping, facebook ads, online courses, premium, hustle, grindup" />
+  <meta name="author" content="GrindUp" />
   <link href="https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@400;700&display=swap" rel="stylesheet" />
   <style>
+    /* Reset */
     * {
       margin: 0; padding: 0; box-sizing: border-box;
     }
@@ -19,9 +23,16 @@
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
+      scroll-behavior: smooth;
     }
 
-    /* Logo with curved border - no color fill, no glow */
+    /* Accessibility focus outline */
+    a:focus, button:focus, img:focus {
+      outline: 3px solid #f5f5f7;
+      outline-offset: 3px;
+    }
+
+    /* Logo with curved border, no color or glow */
     .header-logo {
       position: fixed;
       top: 20px;
@@ -32,16 +43,17 @@
       user-select: none;
       z-index: 1000;
       cursor: default;
+      border: 2px solid #f5f5f7;
+      border-radius: 12px 24px 12px 24px; /* subtle curved corners */
+      padding: 6px 12px;
+      background: transparent;
     }
-    .logo-rounded-border {
-      border: 1.5px solid currentColor; /* simple thin border */
-      border-radius: 20px; /* subtle curve */
-      padding: 6px 10px; /* some horizontal padding for shape */
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: transparent; /* no fill */
-      box-shadow: none; /* no glow */
+    .header-logo img {
+      height: 40px;
+      width: auto;
+      display: block;
+      filter: none;
+      border-radius: 8px;
     }
     .header-logo .brand-name {
       font-weight: 700;
@@ -50,43 +62,8 @@
       text-transform: uppercase;
       color: #f5f5f7;
     }
-    .header-logo img {
-      height: 40px;
-      width: auto;
-      display: block;
-    }
 
-    /* Urgency button with animated emoji */
-    .urgency {
-      background-color: #222;
-      color: #f5f5f7;
-      font-weight: 700;
-      padding: 14px 36px;
-      border-radius: 26px;
-      text-align: center;
-      cursor: pointer;
-      user-select: none;
-      letter-spacing: 0.05em;
-      box-shadow: 0 0 8px rgba(255,255,255,0.08);
-      transition: background-color 0.3s ease;
-      margin-top: 100px;
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .urgency:hover {
-      background-color: #444;
-    }
-    .urgency .pointer {
-      animation: bounce 1.2s infinite ease-in-out;
-      display: inline-block;
-    }
-    @keyframes bounce {
-      0%, 100% { transform: translateX(0); }
-      50% { transform: translateX(6px); }
-    }
-
-    /* Card */
+    /* Main card */
     .card {
       background-color: #111;
       border-radius: 14px;
@@ -95,8 +72,8 @@
       width: 100%;
       box-shadow: 0 0 24px rgba(255,255,255,0.05);
       text-align: center;
+      margin-top: 100px;
       user-select: none;
-      margin-top: 32px;
     }
     .card h1 {
       font-weight: 700;
@@ -123,9 +100,11 @@
       display: inline-block;
       transition: background-color 0.3s ease;
       user-select: none;
+      cursor: pointer;
     }
-    .btn:hover {
+    .btn:hover, .btn:focus {
       background-color: #ddd;
+      outline: none;
     }
     .insta {
       margin-top: 28px;
@@ -138,13 +117,15 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
+      cursor: pointer;
     }
     .insta img {
       width: 20px;
       height: 20px;
+      filter: none;
     }
 
-    /* Section */
+    /* Sections */
     .section {
       max-width: 700px;
       width: 100%;
@@ -195,11 +176,16 @@
       cursor: pointer;
       transition: transform 0.3s ease;
     }
-    .preview img:hover {
+    .preview img:hover, .preview img:focus {
       transform: scale(1.05);
+      outline: none;
+    }
+    .preview img:focus {
+      outline: 3px solid #f5f5f7;
+      outline-offset: 3px;
     }
 
-    /* Zoom Modal */
+    /* Modal for zoom preview */
     .modal {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
@@ -217,34 +203,84 @@
       box-shadow: 0 0 30px rgba(255,255,255,0.2);
     }
 
-    /* Thank You Popup */
-    .popup {
+    /* Loading spinner for modal */
+    .spinner {
+      border: 6px solid #f3f3f3;
+      border-top: 6px solid #f5f5f7;
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      animation: spin 1s linear infinite;
+      position: absolute;
+      z-index: 2100;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg);}
+      100% { transform: rotate(360deg);}
+    }
+
+    /* Urgency button on top */
+    .urgency {
+      background-color: #222;
+      color: #f5f5f7;
+      font-weight: 700;
+      padding: 14px 36px;
+      border-radius: 26px;
+      margin: 12px auto 40px auto;
+      max-width: 520px;
+      text-align: center;
+      cursor: pointer;
+      user-select: none;
+      letter-spacing: 0.05em;
+      box-shadow: 0 0 8px rgba(255,255,255,0.08);
+      transition: background-color 0.3s ease;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+    .urgency:hover, .urgency:focus {
+      background-color: #444;
+      outline: none;
+    }
+
+    /* Thank you popup */
+    .thankyou-popup {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      background-color: #111;
+      background-color: #222;
+      border-radius: 14px;
+      padding: 20px 28px;
+      max-width: 320px;
+      box-shadow: 0 0 16px rgba(255,255,255,0.1);
       color: #f5f5f7;
-      border: 1px solid #333;
-      border-radius: 10px;
-      padding: 16px 20px;
-      box-shadow: 0 0 20px rgba(255,255,255,0.08);
+      font-weight: 600;
+      font-size: 18px;
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      gap: 10px;
       z-index: 3000;
       user-select: none;
     }
-    .popup button {
-      background: none;
+    .thankyou-popup button {
+      background: transparent;
       border: none;
       color: #f5f5f7;
-      font-size: 20px;
+      font-size: 22px;
       cursor: pointer;
+      padding: 0;
       line-height: 1;
-      padding: 0 6px 0 6px;
-      font-weight: 700;
+      font-weight: 900;
+      user-select: none;
+      transition: color 0.2s ease;
+    }
+    .thankyou-popup button:hover, .thankyou-popup button:focus {
+      color: #ddd;
+      outline: none;
     }
 
+    /* Responsive */
     @media (max-width: 600px) {
       .preview img {
         width: 140px;
@@ -255,6 +291,10 @@
       .header-logo {
         top: 12px;
         left: 12px;
+        padding: 4px 10px;
+      }
+      .header-logo img {
+        height: 36px;
       }
     }
   </style>
@@ -262,87 +302,132 @@
 <body>
 
   <div class="header-logo" aria-label="GrindUp Logo and Brand Name">
-    <div class="logo-rounded-border" aria-hidden="true">
-      <img src="grindup-logo.jpg" alt="GrindUp logo" />
-    </div>
+    <img src="grindup-logo.jpg" alt="GrindUp Logo" />
     <div class="brand-name">GRINDUP</div>
   </div>
 
-  <div class="urgency" role="button" tabindex="0" aria-label="Limited Time Free Access Button" onclick="window.open('https://mega.nz/folder/1Ks01TiR#noVGm5BlMoKMU4IzfAiJGQ', '_blank')">
-    <span class="pointer" aria-hidden="true">👉🏽</span> Limited-Time Free Access – Grab it NOW!
+  <div class="urgency" role="button" tabindex="0" aria-pressed="false" aria-label="Limited Time Free Access. Click to download now.">
+    👉🏽 Limited-Time Free Access – Grab it NOW!
   </div>
 
-  <div class="card" role="region" aria-labelledby="welcomeTitle">
-    <h1 id="welcomeTitle">Welcome to GrindUp</h1>
+  <div class="card" role="main">
+    <h1>Welcome to GrindUp</h1>
     <p>Your gateway to premium courses designed to elevate your hustle.</p>
-    <a href="https://mega.nz/folder/1Ks01TiR#noVGm5BlMoKMU4IzfAiJGQ" class="btn" target="_blank" rel="noopener noreferrer">Download Now</a>
-    <a href="https://www.instagram.com/grind.up7/" class="insta" target="_blank" rel="noopener noreferrer" aria-label="Visit Instagram profile">
+    <a href="https://mega.nz/folder/1Ks01TiR#noVGm5BlMoKMU4IzfAiJGQ" class="btn" target="_blank" rel="noopener noreferrer" aria-label="Download premium courses from Mega.nz">Download Now</a>
+    <a href="https://www.instagram.com/grind.up7/" class="insta" target="_blank" rel="noopener noreferrer" aria-label="Visit GrindUp Instagram profile">
       <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Logo" />@grind.up7
     </a>
   </div>
 
-  <div class="section" role="region" aria-labelledby="learnTitle">
-    <h2 id="learnTitle">What You’ll Learn</h2>
+  <div class="section">
+    <h2>What You’ll Learn</h2>
     <p>This package contains multiple high-value courses including Dropshipping, Facebook Ads, and more – everything you need to kickstart your online income journey.</p>
   </div>
 
-  <div class="section" role="region" aria-labelledby="previewTitle">
-    <h2 id="previewTitle">Preview the Course</h2>
-    <div class="preview">
-      <img src="course1.jpg" alt="Course Screenshot 1" tabindex="0" />
-      <img src="course2.jpg" alt="Course Screenshot 2" tabindex="0" />
+  <div class="section">
+    <h2>Preview the Course</h2>
+    <div class="preview" role="list">
+      <img src="course1.jpg" alt="Course Screenshot 1" tabindex="0" loading="lazy" role="listitem" />
+      <img src="course2.jpg" alt="Course Screenshot 2" tabindex="0" loading="lazy" role="listitem" />
     </div>
   </div>
 
-  <div class="section" role="region" aria-labelledby="quoteTitle">
-    <h2 id="quoteTitle">Success Quote</h2>
+  <div class="section">
+    <h2>Success Quote</h2>
     <blockquote>“Success is not final, failure is not fatal: it is the courage to continue that counts.”</blockquote>
     <p>- Winston Churchill</p>
   </div>
 
-  <!-- Zoom Modal -->
+  <!-- Modal for zoom preview -->
   <div class="modal" id="modal" tabindex="-1" role="dialog" aria-hidden="true" aria-label="Image preview">
+    <div class="spinner" id="spinner" aria-hidden="true" style="display:none;"></div>
     <img id="modal-img" src="" alt="Zoomed course preview" />
   </div>
 
-  <!-- Thank You Popup -->
-  <div class="popup" id="popup" role="alert" aria-live="polite">
-    <span>Thank you for visiting GrindUp!</span>
-    <button aria-label="Close thank you popup" onclick="document.getElementById('popup').style.display='none'">✖</button>
+  <!-- Thank you popup -->
+  <div class="thankyou-popup" id="thankyou" role="alertdialog" aria-live="polite" aria-atomic="true">
+    Thank you for visiting!  
+    <button aria-label="Close thank you message" id="close-thankyou">&times;</button>
   </div>
 
   <script>
-    // Image zoom modal logic
+    // Modal image preview with loading spinner
     const modal = document.getElementById('modal');
     const modalImg = document.getElementById('modal-img');
+    const spinner = document.getElementById('spinner');
     const previews = document.querySelectorAll('.preview img');
 
     previews.forEach(img => {
       img.addEventListener('click', () => {
-        modalImg.src = img.src;
-        modal.style.display = 'flex';
-        modal.focus();
+        openModal(img.src, img.alt);
       });
       img.addEventListener('keydown', e => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
-          modalImg.src = img.src;
-          modal.style.display = 'flex';
-          modal.focus();
+          openModal(img.src, img.alt);
         }
       });
     });
 
+    function openModal(src, alt) {
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden', 'false');
+      modalImg.style.display = 'none';
+      spinner.style.display = 'block';
+      modalImg.src = src;
+      modalImg.alt = alt;
+      modal.focus();
+    }
+
+    modalImg.onload = () => {
+      spinner.style.display = 'none';
+      modalImg.style.display = 'block';
+    };
+
     modal.addEventListener('click', () => {
-      modal.style.display = 'none';
-      modalImg.src = '';
+      closeModal();
     });
+
     modal.addEventListener('keydown', e => {
       if (e.key === 'Escape') {
-        modal.style.display = 'none';
-        modalImg.src = '';
+        closeModal();
       }
     });
+
+    function closeModal() {
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden', 'true');
+      modalImg.src = '';
+      spinner.style.display = 'none';
+    }
+
+    // Urgency button opens download link
+    const urgencyBtn = document.querySelector('.urgency');
+    urgencyBtn.addEventListener('click', () => {
+      window.open('https://mega.nz/folder/1Ks01TiR#noVGm5BlMoKMU4IzfAiJGQ', '_blank');
+    });
+    urgencyBtn.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        urgencyBtn.click();
+      }
+    });
+
+    // Thank you popup close button
+    const thankyouPopup = document.getElementById('thankyou');
+    const closeThankyouBtn = document.getElementById('close-thankyou');
+    closeThankyouBtn.addEventListener('click', () => {
+      thankyouPopup.style.display = 'none';
+    });
+  </script>
+
+  <!-- Google Analytics (replace YOUR-GA-ID with actual tracking ID) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR-GA-ID"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'YOUR-GA-ID');
   </script>
 
 </body>
